@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 Portail CNSSAP - Connexion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+            color: #1a3c6e;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #1a3c6e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #163a5e;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            display: none;
+            font-size: 14px;
+            color: #333;
+        }
+        .note {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+        }
+        .link-box {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 4px;
+            word-break: break-all;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔐 Portail CNSSAP</h2>
+        <p style="text-align: center; color: #555;">Veuillez vous identifier</p>
+        
+        <form id="loginForm">
+            <label for="username">Identifiant</label>
+            <input type="text" id="username" placeholder="Votre identifiant" required>
+            
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" placeholder="Votre mot de passe" required>
+            
+            <button type="submit">Se connecter</button>
+        </form>
+        
+        <div id="result">
+            <p><strong>⚠️ Simulation de phishing (à des fins pédagogiques uniquement)</strong></p>
+            <p><strong>Identifiant saisi :</strong> <span id="displayUser"></span></p>
+            <p><strong>Mot de passe saisi :</strong> <span id="displayPass"></span></p>
+            <p style="color: #d9534f; font-size: 13px;"><em>Ces informations ne sont ni transmises ni stockées.</em></p>
+            <p style="color: #d9534f; font-size: 13px;"><em>⚠️ Dans un cas réel, elles seraient envoyées au serveur de l'attaquant.</em></p>
+        </div>
+        
+        <div class="note">
+            Cette page est une simulation destinée à la démonstration pour un mémoire universitaire.
+        </div>
+
+        <!-- Simulation d'un lien "frauduleux" (pour l'email) -->
+        <div class="link-box">
+            <p><strong>🔗 Lien simulé (à copier/coller dans l'email) :</strong></p>
+            <p><code>http://nestorkimbondja.tech-securite.com</code></p>
+            <p style="font-size: 12px; color: #555;">(Ce lien est factice et ne mène nulle part)</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche l'envoi du formulaire
+            
+            // Récupère les valeurs saisies
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Affiche la zone de résultat
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            
+            // Affiche les valeurs
+            document.getElementById('displayUser').textContent = username || '(non saisi)';
+            document.getElementById('displayPass').textContent = password || '(non saisi)';
+            
+            // SIMULATION D'ENVOI VERS UN SERVEUR FACTICE
+            // Dans un cas réel, les données seraient transmises via une requête POST
+            console.log('🔴 Données saisies (simulation) :', { username, password });
+            alert('⚠️ Simulation : vos identifiants seraient envoyés au serveur de l\'attaquant.\n\n' + 
+                  'Identifiant : ' + username + '\n' + 
+                  'Mot de passe : ' + password + '\n\n' +
+                  '(Cette alerte est une démonstration pédagogique.)');
+        });
+    </script>
+</body>
+</html>
